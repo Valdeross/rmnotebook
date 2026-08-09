@@ -4,7 +4,7 @@ import { RefreshCw, Heart } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 const catEmojis = [
-  '🐱', '😻', '😸', '😽', '😼', '🐾', '🐈', '🐈‍⬛', '😻✨', '😽💕', 
+  '🐱', '😻', '😸', '😽', '😼', '🐾', '🐈', '🐈‍⬛', '😻✨', '😽💕',
   '🐱‍👤', '🐱‍👓', '🐱‍🚀', '🐱‍💻', '😽💖', '😻🌸', '😺', '🙀❤️'
 ];
 
