@@ -2,20 +2,19 @@ import React, { useRef, useState, useEffect } from 'react';
 import { Play, Pause, Volume2, VolumeX, Heart, Sparkles, Film } from 'lucide-react';
 
 const frames = [
-  { src: '/media/frames/frame_019.jpg', time: 4.5, text: 'Дом где всегда тепло 🏡' },
-  { src: '/media/frames/frame_021.jpg', time: 5.0, text: 'Твоя светлая улыбка' },
-  { src: '/media/frames/frame_023.jpg', time: 5.5, text: 'Нежность в деталях' },
-  { src: '/media/frames/frame_025.jpg', time: 6.0, text: 'Уютные вечера' },
-  { src: '/media/frames/frame_027.jpg', time: 6.5, text: 'Светящийся взгляд' },
-  { src: '/media/frames/frame_029.jpg', time: 7.0, text: 'Моменты радости' },
-  { src: '/media/frames/frame_030.jpg', time: 7.5, text: 'Особенный день' },
-  { src: '/media/frames/frame_035.jpg', time: 8.5, text: 'Теплые обнимашки' },
-  { src: '/media/frames/frame_035.jpg', time: 8.5, text: 'Бесконечная любовь' },
-  { src: '/media/frames/frame_037.jpg', time: 9.0, text: 'Счастливые секунды' },
-  { src: '/media/frames/frame_039.jpg', time: 9.5, text: 'Сердечный момент' },
-  { src: '/media/frames/frame_041.jpg', time: 10.0, text: 'Котик: Ты со всем справишься! 🐱' },
-  { src: '/media/frames/frame_043.jpg', time: 10.5, text: 'FOR THE BEST GIRL ♡' },
-  { src: '/media/frames/frame_045.jpg', time: 11.0, text: 'Самая лучшая девушка' },
+  { src: './media/frames/frame_019.jpg', time: 4.5, text: 'Дом где всегда тепло 🏡' },
+  { src: './media/frames/frame_021.jpg', time: 5.0, text: 'Твоя светлая улыбка' },
+  { src: './media/frames/frame_023.jpg', time: 5.5, text: 'Нежность в деталях' },
+  { src: './media/frames/frame_025.jpg', time: 6.0, text: 'Уютные вечера' },
+  { src: './media/frames/frame_027.jpg', time: 6.5, text: 'Светящийся взгляд' },
+  { src: './media/frames/frame_029.jpg', time: 7.0, text: 'Моменты радости' },
+  { src: './media/frames/frame_030.jpg', time: 7.5, text: 'Особенный день' },
+  { src: './media/frames/frame_035.jpg', time: 8.5, text: 'Теплые обнимашки' },
+  { src: './media/frames/frame_037.jpg', time: 9.0, text: 'Счастливые секунды' },
+  { src: './media/frames/frame_039.jpg', time: 9.5, text: 'Сердечный момент' },
+  { src: './media/frames/frame_041.jpg', time: 10.0, text: 'Котик: Ты со всем справишься! 🐱' },
+  { src: './media/frames/frame_043.jpg', time: 10.5, text: 'FOR THE BEST GIRL ♡' },
+  { src: './media/frames/frame_045.jpg', time: 11.0, text: 'Самая лучшая девушка' },
 ];
 
 export default function VideoPlayer({ isMuted, setIsMuted }) {
@@ -107,7 +106,7 @@ export default function VideoPlayer({ isMuted, setIsMuted }) {
           <div style={{ flex: 1, position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000' }}>
             <video
               ref={videoRef}
-              src="/media/video.mp4"
+              src="./media/video.mp4"
               muted={isMuted}
               loop
               onTimeUpdate={handleTimeUpdate}
