@@ -70,23 +70,23 @@ export default function VideoPlayer({ isMuted, setIsMuted }) {
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'center',
-        padding: '72px 16px 16px',
-        gap: '16px',
+        padding: '78px 12px 12px',
+        gap: '10px',
       }}>
         {/* Header tag */}
         <div style={{ textAlign: 'center', flexShrink: 0 }}>
           <div style={{
-            display: 'inline-flex', alignItems: 'center', gap: '8px',
-            padding: '4px 16px', borderRadius: '9999px',
+            display: 'inline-flex', alignItems: 'center', gap: '6px',
+            padding: '3px 12px', borderRadius: '9999px',
             border: '1px dashed rgba(240,112,152,0.35)',
-            fontSize: '11px', fontWeight: 600, letterSpacing: '0.1em',
+            fontSize: '10px', fontWeight: 600, letterSpacing: '0.08em',
             textTransform: 'uppercase', color: 'var(--pink)',
-            marginBottom: '6px',
+            marginBottom: '4px',
           }}>
-            <Film style={{ width: '12px', height: '12px' }} />
+            <Film style={{ width: '11px', height: '11px' }} />
             Главный видеоролик
           </div>
-          <h2 className="font-display" style={{ fontSize: 'clamp(20px, 3.5vw, 42px)', fontWeight: 900, textTransform: 'uppercase' }}>
+          <h2 className="font-display" style={{ fontSize: 'clamp(16px, 4vw, 36px)', fontWeight: 900, textTransform: 'uppercase', margin: 0 }}>
             НАШЕ ВИДЕО ДЛЯ ТЕБЯ
           </h2>
         </div>

@@ -482,7 +482,7 @@ html, body {
 /* ============================================
    VIDEO PLAYER RESPONSIVE LAYOUT
    ============================================ */
-@media (max-width: 767px) {
+@media (max-width: 1023px) {
   .video-main-layout {
     flex-direction: column !important;
   }
@@ -494,7 +494,7 @@ html, body {
   }
 }
 
-@media (min-width: 768px) {
+@media (min-width: 1024px) {
   .video-main-layout {
     flex-direction: row !important;
   }
