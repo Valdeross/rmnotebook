@@ -8,8 +8,8 @@ export default function CatsSpread({ data }) {
   const [lunaLoved, setLunaLoved] = useState(false);
   const [athenaLoved, setAthenaLoved] = useState(false);
 
-  const defaultLuna = '/katya_photos/luna.jpg';
-  const defaultAthena = '/katya_photos/athena.jpg';
+  const defaultLuna = './katya_photos/luna.jpg';
+  const defaultAthena = './katya_photos/athena.jpg';
 
   // Meow audio sound synthesizer via Web Audio API
   const playMeow = () => {

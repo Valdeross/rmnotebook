@@ -5,7 +5,7 @@ import { Sparkles } from 'lucide-react';
 export default function CoverSpread({ data, onJumpToPage }) {
   const { girlName = 'Катя', birthDate = '29 ЯНВАРЯ 2004', coverPhoto } = data;
 
-  const defaultCoverPhoto = '/katya_photos/photo_2025-09-02_22-57-08.jpg';
+  const defaultCoverPhoto = './katya_photos/photo_2025-09-02_22-57-08.jpg';
   const currentCover = coverPhoto || defaultCoverPhoto;
 
   const toc = [

@@ -8,8 +8,8 @@ import React, { useState } from 'react';
    ═══════════════════════════════════════════════════════════════ */
 
 export default function StyleVogueSpread({ data }) {
-  const portraitSrc = '/katya_photos/photo_2025-09-02_22-57-08.jpg';
-  const eyeMacroSrc = '/katya_photos/photo_2026-03-06_18-17-06.jpg';
+  const portraitSrc = './katya_photos/photo_2025-09-02_22-57-08.jpg';
+  const eyeMacroSrc = './katya_photos/photo_2026-03-06_18-17-06.jpg';
   const [hoveredNote, setHoveredNote] = useState(null);
 
   /* ─── colour palette swatches ─── */

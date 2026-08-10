@@ -17,8 +17,8 @@ export default function PerfumeSpread({ data }) {
       heartNotes: 'Белый Шоколад • Сливочная Ваниль',
       baseNotes: 'Шелковый Мускус • Древесный Сандал',
       vibe: 'Сливочно-сладкий, уютный и кокетливый аромат с гурманскими нотами',
-      studioImg: '/katya_photos/studio_mur_mur.png',
-      realImg: '/katya_photos/real_mur_mur.jpg',
+      studioImg: './katya_photos/studio_mur_mur.png',
+      realImg: './katya_photos/real_mur_mur.jpg',
       color: 'from-amber-900 via-rose-900 to-stone-900'
     },
     {
@@ -29,8 +29,8 @@ export default function PerfumeSpread({ data }) {
       heartNotes: 'Горная Лаванда • Пряный Табак',
       baseNotes: 'Древесный Январь • Дымчатая Ваниль',
       vibe: 'Тёплый, глубокий и интригующий восточно-пряный шлейф',
-      studioImg: '/katya_photos/studio_cuba_gold.png',
-      realImg: '/katya_photos/real_cuba_gold.jpg',
+      studioImg: './katya_photos/studio_cuba_gold.png',
+      realImg: './katya_photos/real_cuba_gold.jpg',
       color: 'from-amber-800 via-yellow-950 to-zinc-950'
     },
     {
@@ -41,8 +41,8 @@ export default function PerfumeSpread({ data }) {
       heartNotes: 'Вишнёвый Ликёр • Дамасская Роза',
       baseNotes: 'Бобы Тонка • Сахарная Ваниль',
       vibe: 'Сладкий, соблазнительный и яркий вишнёвый соблазн',
-      studioImg: '/katya_photos/studio_sweet_cherry.png',
-      realImg: '/katya_photos/real_sweet_cherry.jpg',
+      studioImg: './katya_photos/studio_sweet_cherry.png',
+      realImg: './katya_photos/real_sweet_cherry.jpg',
       color: 'from-rose-900 via-red-950 to-black'
     },
     {
@@ -53,8 +53,8 @@ export default function PerfumeSpread({ data }) {
       heartNotes: 'Белый Жасмин • Нежная Лилия',
       baseNotes: 'Бархатный Мускус • Светлая Амбра',
       vibe: 'Утонченный, женственный и изысканный фруктово-цветочный вальс',
-      studioImg: '/katya_photos/studio_verato.png',
-      realImg: '/katya_photos/real_verato.jpg',
+      studioImg: './katya_photos/studio_verato.png',
+      realImg: './katya_photos/real_verato.jpg',
       color: 'from-purple-900 via-pink-950 to-zinc-950'
     }
   ];

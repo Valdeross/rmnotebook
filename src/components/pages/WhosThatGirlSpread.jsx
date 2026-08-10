@@ -6,15 +6,15 @@ export default function WhosThatGirlSpread({ data }) {
   const { girlName = 'Катя', mainPhoto, polaroidPhoto, gridPhotos = [] } = data;
 
   const defaultGrid = [
-    '/katya_photos/photo_2026-08-04_16-37-52.jpg',
-    '/katya_photos/photo_2026-06-01_15-17-34.jpg',
-    '/katya_photos/photo_2026-06-01_15-13-07.jpg',
-    '/katya_photos/photo_2026-06-01_15-07-55.jpg',
-    '/katya_photos/photo_2026-04-25_14-49-07.jpg',
-    '/katya_photos/photo_2026-04-06_11-37-35.jpg',
-    '/katya_photos/photo_2026-04-06_11-36-50.jpg',
-    '/katya_photos/photo_2026-03-12_16-57-19.jpg',
-    '/katya_photos/photo_2026-03-09_14-32-25.jpg'
+    './katya_photos/photo_2026-08-04_16-37-52.jpg',
+    './katya_photos/photo_2026-06-01_15-17-34.jpg',
+    './katya_photos/photo_2026-06-01_15-13-07.jpg',
+    './katya_photos/photo_2026-06-01_15-07-55.jpg',
+    './katya_photos/photo_2026-04-25_14-49-07.jpg',
+    './katya_photos/photo_2026-04-06_11-37-35.jpg',
+    './katya_photos/photo_2026-04-06_11-36-50.jpg',
+    './katya_photos/photo_2026-03-12_16-57-19.jpg',
+    './katya_photos/photo_2026-03-09_14-32-25.jpg'
   ];
 
   const photos = gridPhotos.length >= 6 ? gridPhotos : defaultGrid;

@@ -13,7 +13,7 @@ export default function MusicPlaylistSpread({ data }) {
       album: '25-й кадр',
       durationSec: 249,
       durationStr: '4:09',
-      cover: '/katya_photos/photo_2026-03-09_14-32-25.jpg',
+      cover: './katya_photos/photo_2026-03-09_14-32-25.jpg',
       audioUrl: 'https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-acoustic-11270.mp3',
       notes: [329.63, 392.00, 440.00, 523.25, 440.00, 392.00]
     },
@@ -24,7 +24,7 @@ export default function MusicPlaylistSpread({ data }) {
       album: 'Человеко-часы',
       durationSec: 198,
       durationStr: '3:18',
-      cover: '/katya_photos/photo_2026-03-06_18-17-06.jpg',
+      cover: './katya_photos/photo_2026-03-06_18-17-06.jpg',
       audioUrl: 'https://cdn.pixabay.com/download/audio/2022/03/15/audio_c8c8a73229.mp3?filename=indie-rock-loop-20120.mp3',
       notes: [261.63, 293.66, 329.63, 349.23, 392.00, 440.00]
     },
@@ -35,7 +35,7 @@ export default function MusicPlaylistSpread({ data }) {
       album: 'Королева секонд-хенда',
       durationSec: 165,
       durationStr: '2:45',
-      cover: '/katya_photos/photo_2026-04-25_14-49-07.jpg',
+      cover: './katya_photos/photo_2026-04-25_14-49-07.jpg',
       audioUrl: 'https://cdn.pixabay.com/download/audio/2022/01/18/audio_d0a13f69d2.mp3?filename=sunshine-pop-14731.mp3',
       notes: [349.23, 392.00, 440.00, 523.25, 587.33]
     },
@@ -46,7 +46,7 @@ export default function MusicPlaylistSpread({ data }) {
       album: 'Ослепительна (Single)',
       durationSec: 215,
       durationStr: '3:35',
-      cover: '/katya_photos/photo_2025-09-02_22-57-08.jpg',
+      cover: './katya_photos/photo_2025-09-02_22-57-08.jpg',
       audioUrl: 'https://cdn.pixabay.com/download/audio/2022/10/25/audio_2c9748b6ef.mp3?filename=dazzling-beat-124800.mp3',
       notes: [440.00, 523.25, 659.25, 587.33, 523.25]
     }
