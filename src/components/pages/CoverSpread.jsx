@@ -32,8 +32,8 @@ export default function CoverSpread({ data, onJumpToPage }) {
               <span>СПЕЦИАЛЬНЫЙ ВЫПУСК</span>
             </div>
             <h2 className="font-editorial text-2xl sm:text-3xl text-zinc-900 leading-tight mb-2">
-              Письмо для <br />
-              <span className="italic font-vogue text-rose-600">нашего Солнышка ({girlName})</span>
+              Всё о тебе, <br />
+              <span className="italic font-vogue text-rose-600">Катюш</span>
             </h2>
             <p className="font-serif-classic text-xs sm:text-sm text-zinc-700 leading-relaxed mb-3">
               Этот журнал создан для одного самого главного человека. Здесь только её любимые увлечения, её котики Луна и Афина, вселенная Sims, гардероб духов и самые светлые моменты!
@@ -64,7 +64,7 @@ export default function CoverSpread({ data, onJumpToPage }) {
           </div>
 
           <div className="text-right pt-1 border-t border-zinc-100">
-            <span className="font-handwriting text-xl text-rose-600">С любовью, для Солнышка ♡</span>
+            <span className="font-handwriting text-xl text-rose-600">С любовью, для тебя ♡</span>
           </div>
         </div>
       </JournalPage>
