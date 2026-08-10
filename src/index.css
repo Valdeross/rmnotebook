@@ -483,8 +483,23 @@ html, body {
    VIDEO PLAYER RESPONSIVE LAYOUT
    ============================================ */
 @media (max-width: 1023px) {
+  .video-page-wrapper {
+    padding: 72px 10px 10px !important;
+    gap: 8px !important;
+  }
   .video-main-layout {
     flex-direction: column !important;
+  }
+  .video-box-container {
+    width: 100% !important;
+    aspect-ratio: 1 / 1 !important;
+    max-height: 50vh !important;
+    position: relative !important;
+  }
+  .video-box-element {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
   }
   .video-side-panel {
     display: none !important;
@@ -497,6 +512,17 @@ html, body {
 @media (min-width: 1024px) {
   .video-main-layout {
     flex-direction: row !important;
+  }
+  .video-box-container {
+    flex: 1 !important;
+    height: 100% !important;
+    position: relative !important;
+  }
+  .video-box-element {
+    width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important;
   }
   .video-side-panel {
     display: flex !important;

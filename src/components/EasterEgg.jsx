@@ -6,6 +6,10 @@ import confetti from 'canvas-confetti';
 const NEON_PHRASES = [
   'Мне нужна только ты',
   'Ты делаешь мой день лучше',
+  'Зеленоватые глаза с гетерохромией 👁️✨',
+  'Волосы с нежным розовым переходом 🌸',
+  'Самое милое личико на свете ♡',
+  'С тобой можно общаться часами 💭',
   'Я правда люблю тебя',
   'Ты один из лучших людей в моей жизни',
   'Общение с тобой делает меня счастливым',
@@ -13,7 +17,7 @@ const NEON_PHRASES = [
   'Твоя улыбка — моё лекарство',
   'Без тебя всё не то',
   'Ты — мой покой',
-  'Хочу быть рядом с тобой',
+  'Ты неимоверно интересная ✨',
   'Скучаю по тебе',
   'Ты — моё счастье',
   'Мне спокойно рядом с тобой',
@@ -241,20 +245,19 @@ export default function EasterEgg({ onClose }) {
 
           {/* Heartfelt Text Paragraphs */}
           <div style={{
-            display: 'flex', flexDirection: 'column', gap: '10px',
-            fontSize: 'clamp(13px, 2.5vw, 15px)', lineHeight: 1.5,
-            color: 'rgba(255,255,255,0.85)', textAlign: 'center',
+            display: 'flex', flexDirection: 'column', gap: '12px',
+            fontSize: 'clamp(13px, 2.5vw, 15px)', lineHeight: 1.55,
+            color: 'rgba(255,255,255,0.88)', textAlign: 'center',
           }}>
             <p style={{ margin: 0 }}>
               Я люблю тебя <strong style={{ color: 'var(--pink)', textShadow: '0 0 8px var(--pink)' }}>любую</strong>: грустную, злую, радостную, уставшую, счастливую —{' '}
               <strong style={{ color: 'var(--matcha)', textShadow: '0 0 8px var(--matcha)' }}>лишь бы ты была рядом.</strong>
             </p>
             <p style={{ margin: 0 }}>
-              Мне очень нравится любоваться тобой и очень хочется как можно больше рандомных фото и кружочков —{' '}
-              <strong style={{ color: 'var(--pink)', textShadow: '0 0 8px var(--pink)' }}>лишь бы как можно чаще видеть тебя ♡</strong>
+              В тебе восхищает абсолютно всё: твои безумно красивые <strong style={{ color: 'var(--matcha)', textShadow: '0 0 8px var(--matcha)' }}>зеленоватые глаза с гетерохромией</strong> и уникальным рисунком, самое милое личико и чудесные <strong style={{ color: 'var(--pink)', textShadow: '0 0 8px var(--pink)' }}>волосы с переходом из тёмного в розовый</strong> ✨
             </p>
-            <p style={{ margin: 0, fontSize: '13px', opacity: 0.75, color: 'var(--lavender)' }}>
-              Единственное, чего мне не хватает — это тебя рядом. Ты делаешь каждый мой день лучше просто тем, что ты есть.
+            <p style={{ margin: 0, fontSize: '13px', opacity: 0.85, color: 'var(--lavender)' }}>
+              Ты невероятно интересный и глубокий человек, с которым хочется общаться часами и не замечать, как летит время. Ты делаешь каждый мой день лучше просто тем, что ты есть ♡
             </p>
           </div>
 

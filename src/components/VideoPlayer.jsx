@@ -63,16 +63,19 @@ export default function VideoPlayer({ isMuted, setIsMuted }) {
   return (
     <div className="page">
       {/* Page content wrapper */}
-      <div style={{
-        width: '100%',
-        maxWidth: '1060px',
-        height: '100%',
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'center',
-        padding: '78px 12px 12px',
-        gap: '10px',
-      }}>
+      <div
+        className="video-page-wrapper"
+        style={{
+          width: '100%',
+          maxWidth: '1060px',
+          height: '100%',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          padding: '78px 12px 12px',
+          gap: '10px',
+        }}
+      >
         {/* Header tag */}
         <div style={{ textAlign: 'center', flexShrink: 0 }}>
           <div style={{
@@ -103,10 +106,10 @@ export default function VideoPlayer({ isMuted, setIsMuted }) {
           border: '1px solid var(--border)',
           boxShadow: '0 16px 50px rgba(0,0,0,0.5)',
         }}>
-          {/* Main flex container: row on desktop (>=768px), column on mobile (<768px) */}
+          {/* Main flex container */}
           <div className="video-main-layout">
-            {/* Video column */}
-            <div style={{ flex: 1, minWidth: 0, position: 'relative', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', background: '#000' }}>
+            {/* Video box column container */}
+            <div className="video-box-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: '#000' }}>
               <video
                 ref={videoRef}
                 src="./media/video.mp4"
@@ -116,7 +119,8 @@ export default function VideoPlayer({ isMuted, setIsMuted }) {
                 onTimeUpdate={handleTimeUpdate}
                 onLoadedMetadata={() => setDuration(videoRef.current?.duration ?? 11.19)}
                 onClick={togglePlay}
-                style={{ width: '100%', height: '100%', maxHeight: '100%', objectFit: 'contain', cursor: 'pointer' }}
+                className="video-box-element"
+                style={{ cursor: 'pointer' }}
               />
 
               {/* Big play button */}
