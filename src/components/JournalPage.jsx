@@ -6,37 +6,37 @@ export default function JournalPage({ pageNumber, position, children, bgClass = 
 
   return (
     <div
-      className={`page-sheet w-full h-full relative flex flex-col justify-between p-3 sm:p-6 md:p-8 ${bgClass}`}
+      className={`page-sheet w-full h-full relative flex flex-col justify-between p-2.5 sm:p-5 md:p-7 overflow-y-auto custom-scroll ${bgClass}`}
       style={{
         boxSizing: 'border-box',
         backgroundColor: darkTheme ? '#050b07' : undefined,
       }}
     >
       {/* Inner spine shadow gradient */}
-      {isLeft && <div className="page-inner-shadow-right" />}
-      {isRight && <div className="page-inner-shadow-left" />}
+      {isLeft && <div className="page-inner-shadow-right hidden md:block" />}
+      {isRight && <div className="page-inner-shadow-left hidden md:block" />}
 
       {/* Top Header line */}
-      <div className={`flex items-center justify-between text-[8px] sm:text-[10px] tracking-[0.2em] uppercase font-sans pb-1.5 z-10 ${darkTheme ? 'border-b border-[#00ff9d]/30 text-[#00ff9d]' : 'border-b border-zinc-200/80 text-zinc-400'}`}>
-        <span>{darkTheme ? 'THE SIMS • KATYA EDITION' : 'СПЕЦИАЛЬНЫЙ ВЫПУСК ДЛЯ ТЕБЯ'}</span>
-        <span className={darkTheme ? 'font-pixel text-[9px] text-[#00ffaa]' : 'font-editorial italic capitalize tracking-normal text-rose-500 text-[10px] sm:text-[11px]'}>
+      <div className={`flex items-center justify-between text-[8px] sm:text-[10px] tracking-[0.15em] uppercase font-sans pb-1 z-10 flex-shrink-0 ${darkTheme ? 'border-b border-[#00ff9d]/30 text-[#00ff9d]' : 'border-b border-zinc-200/80 text-zinc-400'}`}>
+        <span className="truncate pr-1">{darkTheme ? 'THE SIMS • KATYA EDITION' : 'СПЕЦИАЛЬНЫЙ ВЫПУСК ДЛЯ ТЕБЯ'}</span>
+        <span className={darkTheme ? 'font-pixel text-[8px] sm:text-[9px] text-[#00ffaa] flex-shrink-0' : 'font-editorial italic capitalize tracking-normal text-rose-500 text-[10px] sm:text-[11px] flex-shrink-0'}>
           {darkTheme ? '§ 999,999' : 'Мое Солнышко ♡'}
         </span>
-        <span>29.01.2004</span>
+        <span className="hidden sm:inline pl-1">29.01.2004</span>
       </div>
 
       {/* Main Page Content Area */}
-      <div className="relative flex-1 my-1.5 sm:my-3 flex flex-col z-20 overflow-hidden">
+      <div className="relative flex-1 my-1 sm:my-2 flex flex-col z-20 min-h-0 overflow-y-auto custom-scroll">
         {children}
       </div>
 
       {/* Bottom Footer line */}
-      <div className={`flex items-center justify-between text-[8px] sm:text-[10px] tracking-wider font-sans pt-1.5 z-10 ${darkTheme ? 'border-t border-[#00ff9d]/30 text-[#00ff9d]/80' : 'border-t border-zinc-200/80 text-zinc-400'}`}>
+      <div className={`flex items-center justify-between text-[8px] sm:text-[10px] tracking-wider font-sans pt-1 z-10 flex-shrink-0 ${darkTheme ? 'border-t border-[#00ff9d]/30 text-[#00ff9d]/80' : 'border-t border-zinc-200/80 text-zinc-400'}`}>
         <span>{isLeft ? `СТРАНИЦА ${pageNumber}` : 'THE SIMS 4 HUD'}</span>
-        <span className={darkTheme ? 'text-[8px] tracking-[0.2em] text-[#00ff9d] font-bold uppercase font-pixel' : 'text-[8px] tracking-[0.2em] text-pink-500 font-semibold uppercase'}>
+        <span className={darkTheme ? 'text-[7px] sm:text-[8px] tracking-[0.15em] text-[#00ff9d] font-bold uppercase font-pixel' : 'text-[7px] sm:text-[8px] tracking-[0.15em] text-pink-500 font-semibold uppercase'}>
           {darkTheme ? '★ KATYA SPECIAL ★' : '♡ ТОЛЬКО ДЛЯ ТЕБЯ ♡'}
         </span>
-        <span>{isRight ? `СТРАНИЦА ${pageNumber}` : 'SPRING EDITION 2026'}</span>
+        <span>{isRight ? `СТРАНИЦА ${pageNumber}` : 'SPRING 2026'}</span>
       </div>
     </div>
   );

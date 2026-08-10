@@ -64,18 +64,18 @@ export default function CatsSpread({ data }) {
           </div>
 
           {/* Luna Photo Card */}
-          <div className="my-auto bg-white p-3 rounded-2xl shadow-md border border-rose-100 flex flex-col items-center text-center">
-            <div className="w-40 sm:w-48 h-40 sm:h-48 rounded-xl overflow-hidden shadow-inner border border-zinc-200 mb-3 relative group bg-zinc-100">
+          <div className="my-auto bg-white p-2.5 sm:p-3 rounded-2xl shadow-md border border-rose-100 flex flex-col items-center text-center my-1">
+            <div className="w-32 sm:w-44 h-32 sm:h-44 rounded-xl overflow-hidden shadow-inner border border-zinc-200 mb-2 sm:mb-3 relative group bg-zinc-100">
               <img src={lunaPhoto || defaultLuna} alt="Луна (Светлая кошка)" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute top-2 right-2 bg-black/60 backdrop-blur-md text-white text-[9px] font-sans px-2 py-0.5 rounded-full font-bold">
                 Светлое облачко 🤍
               </div>
             </div>
 
-            <h3 className="font-serif-classic text-lg font-bold text-zinc-800 mb-1">
+            <h3 className="font-serif-classic text-base sm:text-lg font-bold text-zinc-800 mb-1">
               Кошка Луна
             </h3>
-            <p className="font-sans text-xs text-zinc-600 leading-relaxed mb-3">
+            <p className="font-sans text-xs text-zinc-600 leading-relaxed mb-2 sm:mb-3">
               Нежная и светлая хранительница домашнего уюта. Обожает мурчать рядом с Катей и приносить тепло.
             </p>
 
@@ -112,8 +112,8 @@ export default function CatsSpread({ data }) {
           </div>
 
           {/* Athena Photo Card */}
-          <div className="my-auto bg-white p-3 rounded-2xl shadow-md border border-purple-100 flex flex-col items-center text-center">
-            <div className="w-40 sm:w-48 h-40 sm:h-48 rounded-xl overflow-hidden shadow-inner border border-zinc-200 mb-3 relative group bg-zinc-900">
+          <div className="my-auto bg-white p-2.5 sm:p-3 rounded-2xl shadow-md border border-purple-100 flex flex-col items-center text-center my-1">
+            <div className="w-32 sm:w-44 h-32 sm:h-44 rounded-xl overflow-hidden shadow-inner border border-zinc-200 mb-2 sm:mb-3 relative group bg-zinc-900">
               <img src={athenaPhoto || defaultAthena} alt="Афина (Чёрная кошка)" className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
               <div className="absolute top-2 right-2 bg-purple-900/80 backdrop-blur-md text-white text-[9px] font-sans px-2 py-0.5 rounded-full font-bold">
                 Чёрный бархат 🖤

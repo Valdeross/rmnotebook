@@ -84,6 +84,31 @@ export default function MagazineFlipbook({ journalData }) {
     }
   };
 
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+
+  // Swipe threshold in pixels
+  const minSwipeDistance = 45;
+
+  const handleTouchStart = (e) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    if (distance > minSwipeDistance) {
+      nextPage();
+    } else if (distance < -minSwipeDistance) {
+      prevPage();
+    }
+  };
+
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -103,7 +128,7 @@ export default function MagazineFlipbook({ journalData }) {
     <div ref={containerRef} className="flipbook-viewport w-full h-screen text-zinc-100 flex flex-col justify-between overflow-hidden select-none">
 
       {/* TOP HEADER NAV */}
-      <header className="z-40 w-full px-3 py-2 sm:px-4 sm:py-3 bg-black/50 backdrop-blur-md border-b border-white/10 flex items-center justify-between">
+      <header className="z-40 w-full px-2.5 py-2 sm:px-4 sm:py-3 bg-black/60 backdrop-blur-md border-b border-white/10 flex items-center justify-between">
 
         {/* Title */}
         <div className="flex items-center gap-2">
@@ -114,14 +139,14 @@ export default function MagazineFlipbook({ journalData }) {
             <h1 className="font-vogue text-xs sm:text-base font-extrabold uppercase tracking-widest text-white leading-none">
               СОЛНЫШКО ☀️
             </h1>
-            <span className="text-[8px] sm:text-[9px] font-sans text-rose-300 tracking-wider uppercase font-semibold">
-              СПЕЦИАЛЬНЫЙ ЖУРНАЛ ИСКЛЮЧИТЕЛЬНО ДЛЯ ТЕБЯ
+            <span className="text-[8px] sm:text-[9px] font-sans text-rose-300 tracking-wider uppercase font-semibold block">
+              СПЕЦИАЛЬНЫЙ ЖУРНАЛ ДЛЯ ТЕБЯ
             </span>
           </div>
         </div>
 
         {/* Center: Page Slider */}
-        <div className="flex items-center gap-2 bg-zinc-900/90 px-3 py-1 rounded-full border border-white/10">
+        <div className="flex items-center gap-1.5 sm:gap-2 bg-zinc-900/90 px-2.5 sm:px-3 py-1 rounded-full border border-white/10">
           <button onClick={prevPage} disabled={currentSpread === 0} className="text-zinc-400 hover:text-white disabled:opacity-20 p-0.5">
             <ChevronLeft size={16} />
           </button>
@@ -136,7 +161,7 @@ export default function MagazineFlipbook({ journalData }) {
         </div>
 
         {/* Right Actions */}
-        <div className="flex items-center gap-1.5">
+        <div className="flex items-center gap-1 sm:gap-1.5">
           <button
             onClick={() => setShowToc(!showToc)}
             className="p-1.5 sm:p-2 rounded-xl bg-rose-600/90 hover:bg-rose-500 text-white text-xs font-semibold flex items-center gap-1 border border-rose-400/40 shadow-sm"
@@ -155,8 +180,13 @@ export default function MagazineFlipbook({ journalData }) {
 
       </header>
 
-      {/* MAIN CONTENT AREA */}
-      <main className="flex-1 w-full flex items-center justify-center p-0 sm:p-1 relative overflow-hidden">
+      {/* MAIN CONTENT AREA WITH TOUCH SWIPE */}
+      <main
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+        className="flex-1 w-full flex items-center justify-center p-0 sm:p-2 relative overflow-y-auto md:overflow-hidden custom-scroll"
+      >
 
         {/* Desktop Prev Arrow */}
         <button
@@ -168,18 +198,18 @@ export default function MagazineFlipbook({ journalData }) {
         </button>
 
         {/* 3D Book Container (Adaptive for Mobile) */}
-        <div className="book-container w-full max-w-[98vw] xl:max-w-[1500px] h-[88vh] sm:h-[90vh] aspect-auto md:aspect-[4/3] relative my-auto">
+        <div className="book-container w-full max-w-[98vw] xl:max-w-[1500px] h-full md:h-[90vh] aspect-auto md:aspect-[4/3] relative my-auto overflow-y-auto md:overflow-hidden">
 
           <div className="book-spine-line hidden md:block" />
 
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSpread}
-              initial={{ opacity: 0, scale: 0.97 }}
+              initial={{ opacity: 0, scale: 0.98 }}
               animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.97 }}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
-              className="w-full h-full rounded-md overflow-hidden shadow-2xl"
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.3, ease: 'easeOut' }}
+              className="w-full h-full rounded-md overflow-y-auto md:overflow-hidden shadow-2xl custom-scroll"
             >
               <CurrentSpreadComponent
                 data={journalData}
@@ -210,7 +240,7 @@ export default function MagazineFlipbook({ journalData }) {
               <span className="font-vogue text-xs font-bold uppercase tracking-widest text-rose-400">
                 ОГЛАВЛЕНИЕ ЖУРНАЛА «СОЛНЫШКО»
               </span>
-              <button onClick={() => setShowToc(false)} className="text-zinc-400 hover:text-white text-xs">
+              <button onClick={() => setShowToc(false)} className="text-zinc-400 hover:text-white text-xs px-2 py-1">
                 ✕
               </button>
             </div>
@@ -219,7 +249,7 @@ export default function MagazineFlipbook({ journalData }) {
                 <div
                   key={s.id}
                   onClick={() => jumpToSpread(idx)}
-                  className={`p-2 rounded-lg cursor-pointer flex justify-between items-center transition-all ${currentSpread === idx ? 'bg-rose-900/70 border border-rose-500/50 text-white font-bold' : 'bg-zinc-900 hover:bg-zinc-800 text-zinc-300'}`}
+                  className={`p-2.5 rounded-lg cursor-pointer flex justify-between items-center transition-all ${currentSpread === idx ? 'bg-rose-900/70 border border-rose-500/50 text-white font-bold' : 'bg-zinc-900 hover:bg-zinc-800 text-zinc-300'}`}
                 >
                   <span className="text-xs">{s.label}</span>
                   <span className="text-[10px] font-mono text-zinc-500">Разворот {idx + 1}</span>
@@ -230,24 +260,25 @@ export default function MagazineFlipbook({ journalData }) {
         </div>
       )}
 
-      {/* FOOTER BAR */}
-      <footer className="z-40 w-full px-3 py-2 bg-black/60 backdrop-blur-md border-t border-white/10 flex items-center justify-between text-[10px] text-zinc-300 font-sans">
+      {/* FOOTER BAR WITH TOUCH SWIPE HINT */}
+      <footer className="z-40 w-full px-3 py-2 bg-black/70 backdrop-blur-md border-t border-white/10 flex items-center justify-between text-[10px] text-zinc-300 font-sans">
         <button
           onClick={prevPage}
           disabled={currentSpread === 0}
-          className="py-1 px-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 disabled:opacity-20 flex items-center gap-1 sm:hidden"
+          className="py-1.5 px-3 rounded-lg bg-zinc-800 hover:bg-zinc-700 disabled:opacity-20 flex items-center gap-1 sm:hidden font-semibold active:scale-95 transition-transform"
         >
           <ChevronLeft size={14} /> Назад
         </button>
 
-        <span className="mx-auto sm:mx-0 font-semibold text-rose-300">
-          Эксклюзивный экземпляр создан только для тебя ♡
+        <span className="mx-auto sm:mx-0 font-semibold text-rose-300 text-center truncate px-1">
+          <span className="hidden sm:inline">Эксклюзивный экземпляр создан только для тебя ♡</span>
+          <span className="inline sm:hidden text-[9px] text-zinc-400">👈 свайп для листания 👉</span>
         </span>
 
         <button
           onClick={nextPage}
           disabled={currentSpread === totalSpreads - 1}
-          className="py-1 px-3 rounded-lg bg-rose-600 hover:bg-rose-500 text-white disabled:opacity-20 flex items-center gap-1 sm:hidden"
+          className="py-1.5 px-3 rounded-lg bg-rose-600 hover:bg-rose-500 text-white disabled:opacity-20 flex items-center gap-1 sm:hidden font-semibold active:scale-95 transition-transform"
         >
           Вперед <ChevronRight size={14} />
         </button>
