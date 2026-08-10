@@ -1,196 +1,80 @@
-import React, { useState, useEffect, useRef, useCallback } from 'react';
-import Header from './components/Header';
-import HeroSection from './components/HeroSection';
-import ShowcaseList from './components/ShowcaseList';
-import VideoPlayer from './components/VideoPlayer';
-import InteractiveChecklist from './components/InteractiveChecklist';
-import HugGenerator from './components/HugGenerator';
-import LoveNoteModal from './components/LoveNoteModal';
-import EasterEgg from './components/EasterEgg';
-
-const TOTAL_PAGES = 5;
-
-// Floating hearts background particles
-function HeartsBackground() {
-  const particles = [
-    { left: '8%',  delay: '0s',   dur: '14s', sym: '♡' },
-    { left: '18%', delay: '2s',   dur: '18s', sym: '🍃' },
-    { left: '28%', delay: '5s',   dur: '12s', sym: '♡' },
-    { left: '38%', delay: '1s',   dur: '16s', sym: '✿' },
-    { left: '50%', delay: '7s',   dur: '11s', sym: '♡' },
-    { left: '62%', delay: '3.5s', dur: '15s', sym: '🌸' },
-    { left: '72%', delay: '9s',   dur: '13s', sym: '♡' },
-    { left: '82%', delay: '4s',   dur: '17s', sym: '🍃' },
-    { left: '91%', delay: '6s',   dur: '12s', sym: '♡' },
-    { left: '15%', delay: '11s',  dur: '19s', sym: '✿' },
-    { left: '55%', delay: '8s',   dur: '14s', sym: '♡' },
-    { left: '75%', delay: '0.5s', dur: '16s', sym: '🌸' },
-  ];
-
-  return (
-    <div className="hearts-bg">
-      {particles.map((p, i) => (
-        <span
-          key={i}
-          className="heart-particle"
-          style={{
-            left: p.left,
-            animationDelay: p.delay,
-            animationDuration: p.dur,
-            fontSize: i % 3 === 0 ? '18px' : '12px',
-            color: i % 2 === 0 ? 'rgba(240,112,152,0.35)' : 'rgba(157,191,110,0.25)',
-          }}
-        >
-          {p.sym}
-        </span>
-      ))}
-    </div>
-  );
-}
+import React, { useState } from 'react';
+import MagazineFlipbook from './components/MagazineFlipbook';
 
 export default function App() {
-  const [currentPage, setCurrentPage] = useState(0);
-  const [selectedItem, setSelectedItem] = useState(null);
-  const [isMuted, setIsMuted] = useState(true);
-  const [theme, setTheme] = useState('dark');
-  const [showEasterEgg, setShowEasterEgg] = useState(false);
-  const isScrolling = useRef(false);
+  // All user uploaded real photos from /katya_photos/
+  const realPhotos = [
+    '/katya_photos/photo_2025-09-02_22-57-08.jpg', // Pink-haired portrait for cover
+    '/katya_photos/photo_2026-08-04_16-37-52.jpg',
+    '/katya_photos/photo_2026-06-01_15-17-34.jpg',
+    '/katya_photos/photo_2026-06-01_15-13-07.jpg',
+    '/katya_photos/photo_2026-06-01_15-07-55.jpg',
+    '/katya_photos/photo_2026-04-25_14-49-07.jpg',
+    '/katya_photos/photo_2026-04-06_11-37-35.jpg',
+    '/katya_photos/photo_2026-04-06_11-36-50.jpg',
+    '/katya_photos/photo_2026-03-12_16-57-19.jpg',
+    '/katya_photos/photo_2026-03-09_14-32-25.jpg',
+    '/katya_photos/photo_2026-03-06_18-17-06.jpg',
+    '/katya_photos/photo_2026-03-03_11-42-17.jpg',
+    '/katya_photos/photo_2026-03-02_14-39-21.jpg',
+    '/katya_photos/photo_2026-03-02_14-38-55.jpg',
+    '/katya_photos/photo_2026-03-02_13-42-22.jpg',
+    '/katya_photos/photo_2026-02-10_19-22-32.jpg',
+    '/katya_photos/photo_2026-02-10_19-16-31.jpg',
+    '/katya_photos/photo_2026-02-09_13-56-03.jpg',
+    '/katya_photos/photo_2026-02-09_13-55-48.jpg',
+    '/katya_photos/photo_2026-02-09_13-17-41.jpg',
+    '/katya_photos/photo_2026-02-09_13-03-43.jpg',
+    '/katya_photos/photo_2026-02-05_14-05-20.jpg',
+    '/katya_photos/photo_2026-01-17_20-11-57.jpg'
+  ];
 
-  // Apply theme
-  useEffect(() => {
-    document.documentElement.setAttribute('data-theme', theme);
-  }, [theme]);
+  const [journalData] = useState({
+    girlName: 'Катя',
+    birthMonthYear: 'ЯНВАРЬ 2004',
+    birthDayNumber: 29,
+    ageNumber: 22,
+    
+    // Cats: Luna (light), Athena (black)
+    lunaPhoto: '/katya_photos/luna.jpg',
+    athenaPhoto: '/katya_photos/athena.jpg',
 
-  // Navigate to page
-  const navigateTo = useCallback((page) => {
-    if (page < 0 || page >= TOTAL_PAGES) return;
-    if (isScrolling.current) return;
-    isScrolling.current = true;
-    setCurrentPage(page);
-    setTimeout(() => { isScrolling.current = false; }, 850);
-  }, []);
-
-  // Wheel scroll handler
-  useEffect(() => {
-    const handleWheel = (e) => {
-      // Check if mouse is inside an inner scrollable element that hasn't hit edge
-      let el = e.target;
-      while (el && el !== document.body && el !== document.documentElement) {
-        const overflowY = window.getComputedStyle(el).getPropertyValue('overflow-y');
-        if ((overflowY === 'auto' || overflowY === 'scroll') && el.scrollHeight > el.clientHeight + 2) {
-          const isAtTop = el.scrollTop <= 5;
-          const isAtBottom = Math.abs(el.scrollHeight - el.clientHeight - el.scrollTop) <= 5;
-
-          if (e.deltaY > 0 && !isAtBottom) {
-            // Internal downward scroll allowed
-            return;
-          }
-          if (e.deltaY < 0 && !isAtTop) {
-            // Internal upward scroll allowed
-            return;
-          }
-        }
-        el = el.parentElement;
-      }
-
-      e.preventDefault();
-      if (isScrolling.current) return;
-      if (e.deltaY > 25) navigateTo(currentPage + 1);
-      else if (e.deltaY < -25) navigateTo(currentPage - 1);
-    };
-    window.addEventListener('wheel', handleWheel, { passive: false });
-    return () => window.removeEventListener('wheel', handleWheel);
-  }, [currentPage, navigateTo]);
-
-  // Touch/swipe handler
-  useEffect(() => {
-    let touchStartY = 0;
-    const handleTouchStart = (e) => { touchStartY = e.touches[0].clientY; };
-    const handleTouchEnd = (e) => {
-      const diff = touchStartY - e.changedTouches[0].clientY;
-      if (Math.abs(diff) < 50) return;
-      if (diff > 0) navigateTo(currentPage + 1);
-      else navigateTo(currentPage - 1);
-    };
-    window.addEventListener('touchstart', handleTouchStart);
-    window.addEventListener('touchend', handleTouchEnd);
-    return () => {
-      window.removeEventListener('touchstart', handleTouchStart);
-      window.removeEventListener('touchend', handleTouchEnd);
-    };
-  }, [currentPage, navigateTo]);
-
-  // Keyboard navigation
-  useEffect(() => {
-    const handleKey = (e) => {
-      if (e.key === 'ArrowDown' || e.key === 'PageDown') navigateTo(currentPage + 1);
-      if (e.key === 'ArrowUp' || e.key === 'PageUp') navigateTo(currentPage - 1);
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [currentPage, navigateTo]);
-
-  const trackStyle = {
-    height: `${TOTAL_PAGES * 100}vh`,
-    transform: `translateY(-${currentPage * 100}vh)`,
-    transition: 'transform 0.78s cubic-bezier(0.77, 0, 0.18, 1)',
-    willChange: 'transform',
-  };
+    // Key Spreads Real Photos
+    coverPhoto: '/katya_photos/photo_2025-09-02_22-57-08.jpg',
+    calendarPhoto: '/katya_photos/photo_2026-06-01_15-17-34.jpg',
+    mainPhoto: '/katya_photos/photo_2026-04-25_14-49-07.jpg',
+    polaroidPhoto: '/katya_photos/photo_2026-04-06_11-37-35.jpg',
+    airdropPhoto: '/katya_photos/photo_2026-03-12_16-57-19.jpg',
+    playlistPhoto: '/katya_photos/photo_2026-03-09_14-32-25.jpg',
+    stylePhoto: '/katya_photos/photo_2026-03-06_18-17-06.jpg',
+    backCoverPhoto: '/katya_photos/photo_2026-03-03_11-42-17.jpg',
+    simsPhoto: '/katya_photos/photo_2026-02-10_19-22-32.jpg',
+    
+    gridPhotos: realPhotos.slice(0, 8),
+    childhoodPhotos: realPhotos.slice(8, 12),
+    heartPhotos: realPhotos.slice(12, 20),
+    voguePhotos: realPhotos.slice(2, 4),
+    macPhotos: realPhotos.slice(4, 6),
+    
+    monthPhotos: {
+      jan: realPhotos[21],
+      feb: realPhotos[19],
+      mar: realPhotos[13],
+      apr: realPhotos[6],
+      may: realPhotos[5],
+      jun: realPhotos[2],
+      jul: realPhotos[1],
+      aug: realPhotos[0],
+      sep: realPhotos[22],
+      oct: realPhotos[18],
+      nov: realPhotos[15],
+      dec: realPhotos[14]
+    }
+  });
 
   return (
-    <div id="page-root">
-      {/* Global background layers */}
-      <div className="bg-glow" />
-      <div className="bg-noise" />
-      <HeartsBackground />
-
-      {/* Fixed Header + Navigation */}
-      <Header
-        currentPage={currentPage}
-        totalPages={TOTAL_PAGES}
-        onNavigate={navigateTo}
-        isMuted={isMuted}
-        setIsMuted={setIsMuted}
-        theme={theme}
-        setTheme={setTheme}
-        onEasterEgg={() => setShowEasterEgg(true)}
-      />
-
-      {/* Sliding pages track */}
-      <div style={trackStyle}>
-        {/* PAGE 0 — Hero / Envelope */}
-        <HeroSection onScrollNext={() => navigateTo(1)} />
-
-        {/* PAGE 1 — Showcase List */}
-        <ShowcaseList onSelectItem={setSelectedItem} />
-
-        {/* PAGE 2 — Video Player */}
-        <VideoPlayer isMuted={isMuted} setIsMuted={setIsMuted} />
-
-        {/* PAGE 3 — Checklist */}
-        <InteractiveChecklist />
-
-        {/* PAGE 4 — Hug Generator */}
-        <HugGenerator />
-      </div>
-
-      {/* Modal: Love Note Detail */}
-      {selectedItem && (
-        <LoveNoteModal
-          item={selectedItem}
-          onClose={() => setSelectedItem(null)}
-          onPlayTimestamp={() => {
-            setSelectedItem(null);
-            setTimeout(() => navigateTo(2), 150);
-          }}
-          onSpreadLove={() => setShowEasterEgg(true)}
-        />
-      )}
-
-      {/* Easter Egg Modal */}
-      {showEasterEgg && (
-        <EasterEgg onClose={() => setShowEasterEgg(false)} />
-      )}
+    <div className="w-full h-screen bg-[#0d0e12] overflow-hidden select-none">
+      <MagazineFlipbook journalData={journalData} />
     </div>
   );
 }
