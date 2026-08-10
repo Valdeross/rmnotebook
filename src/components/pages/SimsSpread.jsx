@@ -193,8 +193,8 @@ export default function SimsSpread({ data }) {
             <h2 className="text-2xl sm:text-3xl font-bold sims-green leading-tight">
               С ДНЕМ РОЖДЕНИЯ
             </h2>
-            <h3 className="text-xl sm:text-2xl text-pink-300 font-bold">
-              МОЁ СОЛНЦЕ ❤️
+            <h3 className="text-lg sm:text-xl text-pink-300 font-bold tracking-wide">
+              ТЫ САМАЯ ЛУЧШАЯ, МОЁ СОЛНЦЕ ❤️
             </h3>
 
             <div className="bg-black/70 backdrop-blur-xl p-4 rounded-2xl border-2 border-pink-400 text-left shadow-2xl">
