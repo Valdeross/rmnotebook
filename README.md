@@ -1,16 +1,44 @@
-# React + Vite
+# Романтический интерактивный журнал для Кати 💖
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+Интерактивное веб-приложение в формате цифрового журнала/глянцевого альбома, созданное на React, Vite и Tailwind CSS.
 
-Currently, two official plugins are available:
+## 🌟 Особенности
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- 📖 **Эффект перелистывания страниц (Magazine Flipbook)** в стиле глянцевого журнала VOGUE.
+- 🎵 **Интерактивный музыкальный плейлист** с плеером и визуализатором.
+- 🐈 **Разделы любимых питомцев**: котики Луна и Афина.
+- 🎮 **Интерактивные страницы**: The Sims 4 Katya Edition, парфюмерный гардероб, визуальные коллажи, фотохроника и генератор тепла.
+- 🚀 **Автоматический деплой**: публикация на GitHub Pages через `npm run deploy`.
 
-## React Compiler
+## 📁 Структура проекта
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```
+romantic_website/
+├── src/
+│   ├── components/         # Компоненты разворотов журнала (Spreads)
+│   │   ├── pages/          # Страницы журнала (Cover, Cats, Sims, Vogue, etc.)
+│   │   ├── JournalPage.jsx # Обертка страницы
+│   │   └── MagazineFlipbook.jsx # Движок перелистывания
+│   ├── App.jsx             # Главный компонент и данные журнала
+│   ├── index.css           # Глобальные стили Tailwind / шрифты
+│   └── main.jsx            # Точка входа React
+├── public/
+│   ├── katya_photos/       # Личные фотографии Кати
+│   └── media/              # Видео и кадры альбома
+├── dist/                   # Сборка для продакшена
+├── package.json
+└── README.md
+```
 
-## Expanding the Oxlint configuration
+## 🛠️ Запуск и сборка
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and Oxlint's TypeScript related rules in your project.
+```bash
+# Локальный запуск сервера разработки
+npm run dev
+
+# Сборка проекта
+npm run build
+
+# Публикация на GitHub Pages
+npm run deploy
+```
