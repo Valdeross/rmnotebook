@@ -450,3 +450,77 @@ html, body {
    ============================================ */
 [data-theme='light'] .row-text.lit { color: #faf8f5 !important; }
 [data-theme='light'] .row-strip { background: #1a1f18; }
+
+/* ============================================
+   RESPONSIVE UTILITY BREAKPOINTS
+   ============================================ */
+@media (max-width: 639px) {
+  .sm\:inline { display: none !important; }
+}
+@media (min-width: 640px) {
+  .sm\:inline { display: inline !important; }
+}
+
+@media (max-width: 767px) {
+  .md\:flex { display: none !important; }
+  .md\:hidden { display: block !important; }
+}
+@media (min-width: 768px) {
+  .md\:flex { display: flex !important; }
+  .md\:hidden { display: none !important; }
+}
+
+@media (max-width: 1023px) {
+  .lg\:flex { display: none !important; }
+  .lg\:hidden { display: flex !important; }
+}
+@media (min-width: 1024px) {
+  .lg\:flex { display: flex !important; }
+  .lg\:hidden { display: none !important; }
+}
+
+/* ============================================
+   VIDEO PLAYER RESPONSIVE LAYOUT
+   ============================================ */
+@media (max-width: 767px) {
+  .video-main-layout {
+    flex-direction: column !important;
+  }
+  .video-side-panel {
+    display: none !important;
+  }
+  .video-mobile-scrubber {
+    display: flex !important;
+  }
+}
+
+@media (min-width: 768px) {
+  .video-main-layout {
+    flex-direction: row !important;
+  }
+  .video-side-panel {
+    display: flex !important;
+  }
+  .video-mobile-scrubber {
+    display: none !important;
+  }
+}
+
+/* ============================================
+   GPU ACCELERATED FLOATING NEON ANIMATION
+   ============================================ */
+@keyframes floatNeonStream {
+  0% {
+    transform: translate3d(0, -100px, 0);
+  }
+  100% {
+    transform: translate3d(0, 110vh, 0);
+  }
+}
+
+.float-neon-item {
+  will-change: transform;
+  animation: floatNeonStream linear infinite;
+}
+
+
