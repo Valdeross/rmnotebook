@@ -47,7 +47,7 @@ export default function App() {
     airdropPhoto: './katya_photos/photo_2026-03-12_16-57-19.jpg',
     playlistPhoto: './katya_photos/photo_2026-03-09_14-32-25.jpg',
     stylePhoto: './katya_photos/photo_2026-03-06_18-17-06.jpg',
-    backCoverPhoto: './katya_photos/photo_2026-03-03_11-42-17.jpg',
+    backCoverPhoto: './katya_photos/katya_back_cover.jpg',
     simsPhoto: './katya_photos/photo_2026-02-10_19-22-32.jpg',
     
     gridPhotos: realPhotos.slice(0, 8),
