@@ -47,19 +47,19 @@ export default function MagazineFlipbook({ journalData }) {
       const ctx = new AudioCtx();
       const osc = ctx.createOscillator();
       const gain = ctx.createGain();
-      
+
       osc.type = 'sine';
       osc.frequency.setValueAtTime(160, ctx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(35, ctx.currentTime + 0.12);
-      
+
       gain.gain.setValueAtTime(0.08, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
-      
+
       osc.connect(gain);
       gain.connect(ctx.destination);
       osc.start();
       osc.stop(ctx.currentTime + 0.12);
-    } catch (e) {}
+    } catch (e) { }
   };
 
   const nextPage = () => {
@@ -101,10 +101,10 @@ export default function MagazineFlipbook({ journalData }) {
 
   return (
     <div ref={containerRef} className="flipbook-viewport w-full h-screen text-zinc-100 flex flex-col justify-between overflow-hidden select-none">
-      
+
       {/* TOP HEADER NAV */}
       <header className="z-40 w-full px-3 py-2 sm:px-4 sm:py-3 bg-black/50 backdrop-blur-md border-b border-white/10 flex items-center justify-between">
-        
+
         {/* Title */}
         <div className="flex items-center gap-2">
           <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-rose-500/20 border border-rose-500/50 flex items-center justify-center text-rose-400">
@@ -115,7 +115,7 @@ export default function MagazineFlipbook({ journalData }) {
               СОЛНЫШКО ☀️
             </h1>
             <span className="text-[8px] sm:text-[9px] font-sans text-rose-300 tracking-wider uppercase font-semibold">
-              СПЕЦИАЛЬНЫЙ ЖУРНАЛ ИСКЛЮЧИТЕЛЬНО ДЛЯ КАТИ
+              СПЕЦИАЛЬНЫЙ ЖУРНАЛ ИСКЛЮЧИТЕЛЬНО ДЛЯ ТЕБЯ
             </span>
           </div>
         </div>
@@ -157,7 +157,7 @@ export default function MagazineFlipbook({ journalData }) {
 
       {/* MAIN CONTENT AREA */}
       <main className="flex-1 w-full flex items-center justify-center p-0 sm:p-1 relative overflow-hidden">
-        
+
         {/* Desktop Prev Arrow */}
         <button
           onClick={prevPage}
@@ -169,7 +169,7 @@ export default function MagazineFlipbook({ journalData }) {
 
         {/* 3D Book Container (Adaptive for Mobile) */}
         <div className="book-container w-full max-w-[98vw] xl:max-w-[1500px] h-[88vh] sm:h-[90vh] aspect-auto md:aspect-[4/3] relative my-auto">
-          
+
           <div className="book-spine-line hidden md:block" />
 
           <AnimatePresence mode="wait">
@@ -241,7 +241,7 @@ export default function MagazineFlipbook({ journalData }) {
         </button>
 
         <span className="mx-auto sm:mx-0 font-semibold text-rose-300">
-          Эксклюзивный экземпляр создан только для Кати ♡
+          Эксклюзивный экземпляр создан только для тебя ♡
         </span>
 
         <button

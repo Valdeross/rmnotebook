@@ -24,13 +24,13 @@ export default function EditJournalModal({ data, onSave, onClose }) {
   return (
     <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-3">
       <div className="bg-[#18181c] text-white rounded-2xl max-w-lg w-full max-h-[88vh] flex flex-col shadow-2xl border border-zinc-800">
-        
+
         {/* Header */}
         <div className="p-4 border-b border-zinc-800 flex justify-between items-center">
           <div className="flex items-center gap-2 text-rose-400">
             <Sparkles size={18} />
             <h2 className="font-vogue text-sm sm:text-base uppercase tracking-wider font-bold text-white">
-              Персонализация журнала Кати
+              Персонализация журнала
             </h2>
           </div>
           <button onClick={onClose} className="text-zinc-400 hover:text-white p-1">
@@ -40,13 +40,13 @@ export default function EditJournalModal({ data, onSave, onClose }) {
 
         {/* Form Scrollable Body */}
         <form onSubmit={handleSubmit} className="p-4 space-y-4 overflow-y-auto flex-1 custom-scroll text-xs">
-          
+
           {/* Main Info */}
           <div className="space-y-3 bg-zinc-900/80 p-3 rounded-xl border border-zinc-800">
             <h3 className="font-sans font-bold text-rose-400 uppercase tracking-widest text-[10px]">
               Основная информация
             </h3>
-            
+
             <div>
               <label className="block text-zinc-400 mb-1 font-medium">Её Имя:</label>
               <input
@@ -134,7 +134,7 @@ export default function EditJournalModal({ data, onSave, onClose }) {
           {/* Key Photos */}
           <div className="space-y-3 bg-zinc-900/80 p-3 rounded-xl border border-zinc-800">
             <h3 className="font-sans font-bold text-rose-400 uppercase tracking-widest text-[10px]">
-              Загрузка фотографий Кати
+              Загрузка фотографий Катюши
             </h3>
 
             <div>

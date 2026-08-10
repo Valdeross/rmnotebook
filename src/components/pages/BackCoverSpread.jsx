@@ -60,7 +60,7 @@ export default function BackCoverSpread({ data }) {
             </p>
             <div className="pt-1 border-t border-zinc-800/80">
               <span className="font-handwriting text-xl text-rose-400 font-bold block">
-                С днем рождения, мое Солнышко! ♡
+                Мое Солнышко! ♡
               </span>
             </div>
           </div>
